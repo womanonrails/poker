@@ -1,3 +1,4 @@
+require 'poker/hand'
 require 'poker/version'
 
 # Poker engine
