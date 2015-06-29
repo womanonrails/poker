@@ -1,5 +1,5 @@
-require "poker/version"
+require 'poker/version'
 
+# Poker engine
 module Poker
-  # Your code goes here...
 end
