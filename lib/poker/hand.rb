@@ -55,10 +55,8 @@ module Poker
     end
 
     def flush?(array)
-      tmp = array.clone
-      tmp.collect!{|x| x % 4 }
-
-      tmp.uniq.length == 1
+      color = array.map { |item| item % 4 }
+      color.uniq.size == 1
     end
 
     def straight?(array)
