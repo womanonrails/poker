@@ -101,18 +101,9 @@ module Poker
     end
 
     def three_of_a_kind?(array)
-      tmp = array.clone
-      tmp.collect!{|x| x / 4 }
-
-      helper_array = [0] * 13
-
-      tmp.each do |elem|
-        helper_array[elem] += 1
-      end
-
-      helper_array.delete(0)
-
-      helper_array.include?(3) && helper_array.include?(1)
+      hash = Hash.new(0)
+      array.each { |item| hash[item / 4] += 1 }
+      hash.values.include?(3)
     end
 
     def two_pair?(array)
