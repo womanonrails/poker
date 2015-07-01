@@ -17,11 +17,7 @@ module Poker
 
     #Jeśli układ jest pokerem, numery kart modulo 4 są sobie równe
     def straight_flush?(array)
-      if straight?(array) and flush?(array)
-        return true
-      else
-        return false
-      end
+      straight?(array) && flush?(array)
     end
 
     #jeśli mamy karetę, jeśli podzielę numery kart przez 4
@@ -38,11 +34,7 @@ module Poker
 
       helper_array.delete(0)
 
-      if helper_array.include?(4) and helper_array.include?(1)
-        return true
-      else
-        return false
-      end
+      helper_array.include?(4) && helper_array.include?(1)
     end
 
     def full_house?(array)
@@ -57,22 +49,14 @@ module Poker
 
       helper_array.delete(0)
 
-      if helper_array.include?(3) and helper_array.include?(2)
-        return true
-      else
-        return false
-      end
+      helper_array.include?(3) && helper_array.include?(2)
     end
 
     def flush?(array)
       tmp = array.clone
       tmp.collect!{|x| x % 4 }
 
-      if tmp.uniq.length == 1
-        return true
-      else
-        return false
-      end
+      tmp.uniq.length == 1
     end
 
     def straight?(array)
@@ -96,11 +80,7 @@ module Poker
           sum += num
         end
 
-        if sum == 6
-          return true
-        else
-          return false
-        end
+        sum == 6
       end
     end
 
@@ -115,11 +95,7 @@ module Poker
         sum += num
       end
 
-      if sum == 10
-        return true
-      else
-        return false
-      end
+      sum == 10
     end
 
     def three_of_a_kind?(array)
@@ -134,11 +110,7 @@ module Poker
 
       helper_array.delete(0)
 
-      if helper_array.include?(3) and helper_array.include?(1)
-        return true
-      else
-        return false
-      end
+      helper_array.include?(3) && helper_array.include?(1)
     end
 
     def two_pair?(array)
@@ -153,11 +125,7 @@ module Poker
 
       helper_array.delete(0)
 
-      if helper_array.include?(2) and helper_array.length == 3
-        return true
-      else
-        return false
-      end
+      helper_array.include?(2) && helper_array.length == 3
     end
 
     def one_pair?(array)
@@ -176,19 +144,11 @@ module Poker
 
       helper_array.delete(0)
 
-      if helper_array.include?(2)
-        return true
-      else
-        return false
-      end
+      helper_array.include?(2)
     end
 
     def high_card?(array)
-      if array.last >= 36
-        return true
-      else
-        return false
-      end
+      array.last >= 36
     end
   end
 end
