@@ -6,7 +6,7 @@ describe Poker::Hand do
     expect(cards).not_to be_nil
   end
 
-  it "detects straight_flush" do
+  it 'detects straight_flush' do
     #karty po kolei
     expect(subject.check([0, 4, 8, 12, 16])).to eq(9)
     expect(subject.check([5, 9, 13, 17, 21])).to eq(9)
@@ -22,7 +22,7 @@ describe Poker::Hand do
     expect(subject.check([49, 45, 41, 37, 33].shuffle)).to eq(9)
   end
 
-  it "detects four_of_a_kind" do
+  it 'detects four_of_a_kind' do
     #karty po kolei
     expect(subject.check([0, 1, 2, 3, 4])).to eq(8)
     expect(subject.check([4, 5, 6, 0, 7])).to eq(8)
@@ -38,7 +38,7 @@ describe Poker::Hand do
     expect(subject.check([36, 37, 38, 39, 0].shuffle)).to eq(8)
   end
 
-  it "detects full_house" do
+  it 'detects full_house' do
     #karty po kolei
     expect(subject.check([1, 2, 3, 4, 5])).to eq(7)
     expect(subject.check([5, 6, 7, 8, 9])).to eq(7)
@@ -54,7 +54,7 @@ describe Poker::Hand do
     expect(subject.check([38, 39, 40, 41, 42].shuffle)).to eq(7)
   end
 
-  it "detects flush" do
+  it 'detects flush' do
     #karty po kolei
     expect(subject.check([0, 4, 8, 12, 20])).to eq(6)
     expect(subject.check([5, 9, 13, 17, 25])).to eq(6)
@@ -70,7 +70,7 @@ describe Poker::Hand do
     expect(subject.check([49, 41, 29, 17, 13].shuffle)).to eq(6)
   end
 
-  it "detects straight" do
+  it 'detects straight' do
     #karty po kolei
     expect(subject.check([0, 5, 10, 15, 18])).to eq(5)
     expect(subject.check([4, 9, 14, 19, 22])).to eq(5)
@@ -86,7 +86,7 @@ describe Poker::Hand do
     expect(subject.check([34, 31, 26, 21, 16].shuffle)).to eq(5)
   end
 
-  it "detects three_of_a_kind" do
+  it 'detects three_of_a_kind' do
     #karty po kolei
     expect(subject.check([0, 1, 2, 4, 8])).to eq(4)
     expect(subject.check([4, 5, 6, 8, 12])).to eq(4)
@@ -102,7 +102,7 @@ describe Poker::Hand do
     expect(subject.check([51, 50, 49, 0, 14].shuffle)).to eq(4)
   end
 
-  it "detects two_pair" do
+  it 'detects two_pair' do
     #karty po kolei
     expect(subject.check([0, 1, 4, 5, 8])).to eq(3)
     expect(subject.check([4, 5, 8, 9, 12])).to eq(3)
@@ -118,7 +118,7 @@ describe Poker::Hand do
     expect(subject.check([36, 37, 40, 41, 44].shuffle)).to eq(3)
   end
 
-  it "detects pair" do
+  it 'detects pair' do
     #karty po kolei
     expect(subject.check([0, 7, 8, 36, 37])).to eq(2)
     expect(subject.check([0, 40, 41, 44, 48])).to eq(2)
@@ -134,7 +134,7 @@ describe Poker::Hand do
     expect(subject.check([48, 49, 0, 39, 18].shuffle)).to eq(2)
   end
 
-  it "detects high_card" do
+  it 'detects high_card' do
     #karty po kolei
     expect(subject.check([0, 7, 8, 12, 37])).to eq(1)
     expect(subject.check([0, 40, 19, 44, 48])).to eq(1)
@@ -150,7 +150,7 @@ describe Poker::Hand do
     expect(subject.check([48, 21, 0, 39, 18].shuffle)).to eq(1)
   end
 
-  it "detects nothing" do
+  it 'detects nothing' do
     #karty po kolei
     expect(subject.check([0, 10, 18, 24, 34])).to eq(0)
     expect(subject.check([4, 24, 22, 28, 8])).to eq(0)
