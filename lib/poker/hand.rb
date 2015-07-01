@@ -40,18 +40,7 @@ module Poker
     end
 
     def full_house?(array)
-      tmp = array.clone
-      tmp.collect!{|x| x / 4 }
-
-      helper_array = [0] * 13
-
-      tmp.each do |elem|
-        helper_array[elem] += 1
-      end
-
-      helper_array.delete(0)
-
-      helper_array.include?(3) && helper_array.include?(2)
+      three_of_a_kind?(array) && one_pair?(array)
     end
 
     def flush?(array)
