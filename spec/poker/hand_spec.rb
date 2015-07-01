@@ -73,6 +73,7 @@ describe Poker::Hand do
   it 'detects straight' do
     #karty po kolei
     expect(subject.check([0, 5, 10, 15, 18])).to eq(5)
+    expect(subject.check([0, 5, 10, 15, 48])).to eq(5)
     expect(subject.check([4, 9, 14, 19, 22])).to eq(5)
     expect(subject.check([8, 13, 18, 23, 26])).to eq(5)
     expect(subject.check([12, 17, 22, 27, 30])).to eq(5)
@@ -80,6 +81,7 @@ describe Poker::Hand do
 
     #karty zrandomizowane
     expect(subject.check([49, 46, 43, 38, 33].shuffle)).to eq(5)
+    expect(subject.check([1, 6, 9, 15, 50].shuffle)).to eq(5)
     expect(subject.check([45, 42, 39, 34, 29].shuffle)).to eq(5)
     expect(subject.check([41, 38, 35, 30, 25].shuffle)).to eq(5)
     expect(subject.check([37, 34, 31, 26, 21].shuffle)).to eq(5)

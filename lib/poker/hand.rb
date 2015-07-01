@@ -9,15 +9,14 @@ module Poker
       return 8 if four_of_a_kind?(array)
       return 7 if full_house?(array)
       return 6 if flush?(array)
+      return 5 if straight?(array)
+      return 4 if three_of_a_kind?(array)
       return 3 if two_pair?(array)
       return 2 if one_pair?(array)
-      return 4 if three_of_a_kind?(array)
-      return 5 if straight?(array)
       return 1 if high_card?(array)
       return 0
     end
 
-    #Jeśli układ jest pokerem, numery kart modulo 4 są sobie równe
     def straight_flush?(array)
       straight?(array) && flush?(array)
     end
@@ -37,43 +36,16 @@ module Poker
       color.uniq.size == 1
     end
 
+    def normal_straight?(array)
+      array.each_cons(2) do |previous, current|
+        return false unless previous + 1 == current
+      end
+      true
+    end
+
     def straight?(array)
-      if array.last / 4 == 12
-        return straight_with_ace?(array)
-      else
-        return true_straight?(array)
-      end
-    end
-
-    def straight_with_ace?(array)
-      if true_straight?(array)
-        return true
-      else
-        tmp = array.clone
-        tmp.collect!{|x| x / 4}
-        tmp.delete(12)
-
-        sum = 0;
-        tmp.each do |num|
-          sum += num
-        end
-
-        sum == 6
-      end
-    end
-
-    def true_straight?(array)
-      tmp = array.clone
-      minimum_card = tmp[0] / 4
-
-      tmp.collect!{|x| x / 4 - minimum_card}
-
-      sum = 0;
-      tmp.each do |num|
-        sum += num
-      end
-
-      sum == 10
+      carts = array.map { |item| item / 4 }
+      [0, 1, 2, 3, 12] == carts || normal_straight?(carts)
     end
 
     def three_of_a_kind?(array)
