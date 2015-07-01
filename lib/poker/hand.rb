@@ -22,21 +22,10 @@ module Poker
       straight?(array) && flush?(array)
     end
 
-    #jeśli mamy karetę, jeśli podzielę numery kart przez 4
-    #4 pierwsze lub 4 ostatnie powinny być sobie równe
     def four_of_a_kind?(array)
-      tmp = array.clone
-      tmp.collect!{|x| x / 4 }
-
-      helper_array = [0] * 13
-
-      tmp.each do |elem|
-        helper_array[elem] += 1
-      end
-
-      helper_array.delete(0)
-
-      helper_array.include?(4) && helper_array.include?(1)
+      hash = Hash.new(0)
+      array.each { |item| hash[item / 4] += 1 }
+      hash.values.include?(4)
     end
 
     def full_house?(array)
