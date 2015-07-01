@@ -116,18 +116,9 @@ module Poker
     end
 
     def two_pair?(array)
-      tmp = array.clone
-      tmp.collect!{|x| x / 4 }
-
-      helper_array = [0] * 13
-
-      tmp.each do |elem|
-        helper_array[elem] += 1
-      end
-
-      helper_array.delete(0)
-
-      helper_array.include?(2) && helper_array.length == 3
+      hash = Hash.new(0)
+      array.each { |item| hash[item / 4] += 1 }
+      (hash.values - [2]).size == 1
     end
 
     def one_pair?(array)
