@@ -1,3 +1,5 @@
+require 'pry'
+
 module Poker
   # Poker hand
   class Hand
@@ -129,22 +131,9 @@ module Poker
     end
 
     def one_pair?(array)
-      tmp = array.clone
-      tmp.collect!{|x| x / 4 }
-
-    #  (0..8).each do |elem|
-    #    tmp.delete(elem)
-    #  end
-
-      helper_array = [0] * 13
-
-      tmp.each do |elem|
-        helper_array[elem] += 1
-      end
-
-      helper_array.delete(0)
-
-      helper_array.include?(2)
+      hash = Hash.new(0)
+      array.each { |item| hash[item / 4] += 1 }
+      hash.values.include?(2)
     end
 
     def high_card?(array)
