@@ -17,9 +17,9 @@ describe Poker::Hand do
     [31, 35, 47, 43, 39].shuffle,
     [32, 48, 40, 44, 36].shuffle,
     [49, 45, 41, 37, 33].shuffle
-  ].each do |carts|
-    it "detects straight_flush for #{carts}" do
-      hand = described_class.new(carts)
+  ].each do |cards|
+    it "detects straight_flush for #{cards}" do
+      hand = described_class.new(cards)
       expect(hand.check).to eq 9
     end
   end
@@ -35,9 +35,9 @@ describe Poker::Hand do
     [28, 29, 30, 31, 0].shuffle,
     [32, 33, 34, 35, 0].shuffle,
     [36, 37, 38, 39, 0].shuffle
-  ].each do |carts|
-    it "detects four_of_a_kind for #{carts}" do
-      hand = described_class.new(carts)
+  ].each do |cards|
+    it "detects four_of_a_kind for #{cards}" do
+      hand = described_class.new(cards)
       expect(hand.check).to eq 8
     end
   end
@@ -53,9 +53,9 @@ describe Poker::Hand do
     [30, 31, 32, 33, 34].shuffle,
     [34, 35, 36, 37, 38].shuffle,
     [38, 39, 40, 41, 42].shuffle
-  ].each do |carts|
-    it "detects full_house for #{carts}" do
-      hand = described_class.new(carts)
+  ].each do |cards|
+    it "detects full_house for #{cards}" do
+      hand = described_class.new(cards)
       expect(hand.check).to eq 7
     end
   end
@@ -71,9 +71,9 @@ describe Poker::Hand do
     [3, 7, 15, 51, 39].shuffle,
     [2, 50, 22, 30, 10].shuffle,
     [49, 41, 29, 17, 13].shuffle
-  ].each do |carts|
-    it "detects flush for #{carts}" do
-      hand = described_class.new(carts)
+  ].each do |cards|
+    it "detects flush for #{cards}" do
+      hand = described_class.new(cards)
       expect(hand.check).to eq 6
     end
   end
@@ -91,9 +91,9 @@ describe Poker::Hand do
     [41, 38, 35, 30, 25].shuffle,
     [37, 34, 31, 26, 21].shuffle,
     [34, 31, 26, 21, 16].shuffle
-  ].each do |carts|
-    it "detects straight for #{carts}" do
-      hand = described_class.new(carts)
+  ].each do |cards|
+    it "detects straight for #{cards}" do
+      hand = described_class.new(cards)
       expect(hand.check).to eq 5
     end
   end
@@ -109,9 +109,9 @@ describe Poker::Hand do
     [28, 29, 30, 32, 37].shuffle,
     [32, 33, 34, 0, 4].shuffle,
     [51, 50, 49, 0, 14].shuffle
-  ].each do |carts|
-    it "detects three_of_a_kind for #{carts}" do
-      hand = described_class.new(carts)
+  ].each do |cards|
+    it "detects three_of_a_kind for #{cards}" do
+      hand = described_class.new(cards)
       expect(hand.check).to eq 4
     end
   end
@@ -127,9 +127,9 @@ describe Poker::Hand do
     [28, 29, 32, 33, 37].shuffle,
     [32, 33, 36, 37, 40].shuffle,
     [36, 37, 40, 41, 44].shuffle
-  ].each do |carts|
-    it "detects two_pair for #{carts}" do
-      hand = described_class.new(carts)
+  ].each do |cards|
+    it "detects two_pair for #{cards}" do
+      hand = described_class.new(cards)
       expect(hand.check).to eq 3
     end
   end
@@ -145,9 +145,9 @@ describe Poker::Hand do
     [49, 50, 0, 7, 9].shuffle,
     [37, 39, 1, 13, 21].shuffle,
     [48, 49, 0, 39, 18].shuffle
-  ].each do |carts|
-    it "detects pair for #{carts}" do
-      hand = described_class.new(carts)
+  ].each do |cards|
+    it "detects pair for #{cards}" do
+      hand = described_class.new(cards)
       expect(hand.check).to eq 2
     end
   end
@@ -163,9 +163,9 @@ describe Poker::Hand do
     [49, 21, 0, 7, 9].shuffle,
     [2, 39, 29, 13, 21].shuffle,
     [48, 21, 0, 39, 18].shuffle
-  ].each do |carts|
-    it "detects high_card for #{carts}" do
-      hand = described_class.new(carts)
+  ].each do |cards|
+    it "detects high_card for #{cards}" do
+      hand = described_class.new(cards)
       expect(hand.check).to eq 1
     end
   end
@@ -181,9 +181,9 @@ describe Poker::Hand do
     [8, 28, 26, 32, 2].shuffle,
     [12, 0, 19, 34, 6].shuffle,
     [16, 0, 34, 20, 9].shuffle
-  ].each do |carts|
-    it "detects high_card for #{carts}" do
-      hand = described_class.new(carts)
+  ].each do |cards|
+    it "detects high_card for #{cards}" do
+      hand = described_class.new(cards)
       expect(hand.check).to eq 0
     end
   end

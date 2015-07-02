@@ -5,7 +5,7 @@ module Poker
   class Hand
     def initialize(array)
       @array = array.sort
-      @carts = @array.map { |item| item / 4 }
+      @cards = @array.map { |item| item / 4 }
     end
 
     def check
@@ -27,7 +27,7 @@ module Poker
 
     def four_of_a_kind?
       hash = Hash.new(0)
-      @carts.each { |item| hash[item] += 1 }
+      @cards.each { |item| hash[item] += 1 }
       hash.values.include?(4)
     end
 
@@ -41,31 +41,31 @@ module Poker
     end
 
     def normal_straight?
-      @carts.each_cons(2) do |previous, current|
+      @cards.each_cons(2) do |previous, current|
         return false unless previous + 1 == current
       end
       true
     end
 
     def straight?
-      [0, 1, 2, 3, 12] == @carts || normal_straight?
+      [0, 1, 2, 3, 12] == @cards || normal_straight?
     end
 
     def three_of_a_kind?
       hash = Hash.new(0)
-      @carts.each { |item| hash[item] += 1 }
+      @cards.each { |item| hash[item] += 1 }
       hash.values.include?(3)
     end
 
     def two_pair?
       hash = Hash.new(0)
-      @carts.each { |item| hash[item] += 1 }
+      @cards.each { |item| hash[item] += 1 }
       (hash.values - [2]).size == 1
     end
 
     def one_pair?
       hash = Hash.new(0)
-      @carts.each { |item| hash[item] += 1 }
+      @cards.each { |item| hash[item] += 1 }
       hash.values.include?(2)
     end
 
