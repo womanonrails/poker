@@ -6,6 +6,13 @@ module Poker
     def initialize(array)
       @array = array.sort
       @cards = @array.map { |item| item / 4 }
+      @frequency = cards_frequency
+    end
+
+    def cards_frequency
+      hash = Hash.new(0)
+      @cards.each { |item| hash[item] += 1 }
+      hash.values
     end
 
     def check
@@ -26,9 +33,7 @@ module Poker
     end
 
     def four_of_a_kind?
-      hash = Hash.new(0)
-      @cards.each { |item| hash[item] += 1 }
-      hash.values.include?(4)
+      @frequency.include?(4)
     end
 
     def full_house?
@@ -52,21 +57,15 @@ module Poker
     end
 
     def three_of_a_kind?
-      hash = Hash.new(0)
-      @cards.each { |item| hash[item] += 1 }
-      hash.values.include?(3)
+      @frequency.include?(3)
     end
 
     def two_pair?
-      hash = Hash.new(0)
-      @cards.each { |item| hash[item] += 1 }
-      (hash.values - [2]).size == 1
+      (@frequency - [2]).size == 1
     end
 
     def one_pair?
-      hash = Hash.new(0)
-      @cards.each { |item| hash[item] += 1 }
-      hash.values.include?(2)
+      @frequency.include?(2)
     end
 
     def high_card?
