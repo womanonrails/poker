@@ -10,16 +10,16 @@ module Poker
     end
 
     def check
-      return 9 if straight_flush?
-      return 8 if four_of_a_kind?
-      return 7 if full_house?
-      return 6 if flush?
-      return 5 if straight?
-      return 4 if three_of_a_kind?
-      return 3 if two_pair?
-      return 2 if one_pair?
-      return 1 if high_card?
-      return 0
+      return :straight_flush if straight_flush?
+      return :four_of_a_kind if four_of_a_kind?
+      return :full_house if full_house?
+      return :flush if flush?
+      return :straight if straight?
+      return :three_of_a_kind if three_of_a_kind?
+      return :two_pair if two_pair?
+      return :one_pair if one_pair?
+      return :high_card if high_card?
+      return :none
     end
 
     private

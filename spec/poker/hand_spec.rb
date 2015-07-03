@@ -12,7 +12,7 @@ describe Poker::Hand do
   ].each do |cards|
     it "detects royal_flush for #{cards}" do
       hand = described_class.new(cards)
-      expect(hand.check).to eq 10
+      expect(hand.check).to eq :royal_flush
     end
   end
 
@@ -30,7 +30,7 @@ describe Poker::Hand do
   ].each do |cards|
     it "detects straight_flush for #{cards}" do
       hand = described_class.new(cards)
-      expect(hand.check).to eq 9
+      expect(hand.check).to eq :straight_flush
     end
   end
 
@@ -48,7 +48,7 @@ describe Poker::Hand do
   ].each do |cards|
     it "detects four_of_a_kind for #{cards}" do
       hand = described_class.new(cards)
-      expect(hand.check).to eq 8
+      expect(hand.check).to eq :four_of_a_kind
     end
   end
 
@@ -66,7 +66,7 @@ describe Poker::Hand do
   ].each do |cards|
     it "detects full_house for #{cards}" do
       hand = described_class.new(cards)
-      expect(hand.check).to eq 7
+      expect(hand.check).to eq :full_house
     end
   end
 
@@ -84,7 +84,7 @@ describe Poker::Hand do
   ].each do |cards|
     it "detects flush for #{cards}" do
       hand = described_class.new(cards)
-      expect(hand.check).to eq 6
+      expect(hand.check).to eq :flush
     end
   end
 
@@ -104,7 +104,7 @@ describe Poker::Hand do
   ].each do |cards|
     it "detects straight for #{cards}" do
       hand = described_class.new(cards)
-      expect(hand.check).to eq 5
+      expect(hand.check).to eq :straight
     end
   end
 
@@ -122,7 +122,7 @@ describe Poker::Hand do
   ].each do |cards|
     it "detects three_of_a_kind for #{cards}" do
       hand = described_class.new(cards)
-      expect(hand.check).to eq 4
+      expect(hand.check).to eq :three_of_a_kind
     end
   end
 
@@ -140,7 +140,7 @@ describe Poker::Hand do
   ].each do |cards|
     it "detects two_pair for #{cards}" do
       hand = described_class.new(cards)
-      expect(hand.check).to eq 3
+      expect(hand.check).to eq :two_pair
     end
   end
 
@@ -158,7 +158,7 @@ describe Poker::Hand do
   ].each do |cards|
     it "detects pair for #{cards}" do
       hand = described_class.new(cards)
-      expect(hand.check).to eq 2
+      expect(hand.check).to eq :one_pair
     end
   end
 
@@ -176,7 +176,7 @@ describe Poker::Hand do
   ].each do |cards|
     it "detects high_card for #{cards}" do
       hand = described_class.new(cards)
-      expect(hand.check).to eq 1
+      expect(hand.check).to eq :high_card
     end
   end
 
@@ -194,7 +194,7 @@ describe Poker::Hand do
   ].each do |cards|
     it "detects high_card for #{cards}" do
       hand = described_class.new(cards)
-      expect(hand.check).to eq 0
+      expect(hand.check).to eq :none
     end
   end
 end
