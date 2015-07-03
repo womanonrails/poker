@@ -7,6 +7,16 @@ describe Poker::Hand do
   end
 
   [
+    [32, 36, 40, 44, 48],
+    [35, 39, 43, 47, 51].shuffle
+  ].each do |cards|
+    it "detects royal_flush for #{cards}" do
+      hand = described_class.new(cards)
+      expect(hand.check).to eq 10
+    end
+  end
+
+  [
     [0, 4, 8, 12, 16],
     [5, 9, 13, 17, 21],
     [10, 14, 18, 22, 26],
