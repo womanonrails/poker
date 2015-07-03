@@ -7,19 +7,17 @@ module Poker
       @array = array.sort
       @figures, @colors = cards_figures_and_colors
       @frequency = cards_frequency.values
+      @order_checking = [
+        :straight_flush, :four_of_a_kind, :full_house, :flush, :straight,
+        :three_of_a_kind, :two_pair, :one_pair, :high_card, :none
+      ]
     end
 
     def check
-      return :straight_flush if straight_flush?
-      return :four_of_a_kind if four_of_a_kind?
-      return :full_house if full_house?
-      return :flush if flush?
-      return :straight if straight?
-      return :three_of_a_kind if three_of_a_kind?
-      return :two_pair if two_pair?
-      return :one_pair if one_pair?
-      return :high_card if high_card?
-      return :none
+      @order_checking.each do |name|
+        method_name = (name.to_s + '?').to_sym
+        return name if send(method_name)
+      end
     end
 
     private
@@ -75,6 +73,10 @@ module Poker
 
     def high_card?
       @figures.last >= 9
+    end
+
+    def none?
+      true
     end
   end
 end
