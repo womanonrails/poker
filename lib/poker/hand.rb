@@ -1,22 +1,29 @@
 require 'pry'
 
+# Poker class
 module Poker
+  ORDER_CHECKING = [
+    :straight_flush, :four_of_a_kind, :full_house, :flush, :straight,
+    :three_of_a_kind, :two_pair, :one_pair, :high_card, :none
+  ]
+
   # Poker hand
   class Hand
-    def initialize(array)
+    def initialize(array, order_checking = ORDER_CHECKING)
       @array = array.sort
       @figures, @colors = cards_figures_and_colors
       @frequency = cards_frequency.values
-      @order_checking = [
-        :straight_flush, :four_of_a_kind, :full_house, :flush, :straight,
-        :three_of_a_kind, :two_pair, :one_pair, :high_card, :none
-      ]
+      @order_checking = order_checking
     end
 
     def check
       @order_checking.each do |name|
-        method_name = (name.to_s + '?').to_sym
-        return name if send(method_name)
+        if name == :four_of_a_kind
+          return name if FourOfAKind.new(@array).check == name
+        else
+          method_name = (name.to_s + '?').to_sym
+          return name if send(method_name)
+        end
       end
     end
 
@@ -30,10 +37,6 @@ module Poker
       @figures.each_with_object(Hash.new(0)) do |item, hash|
         hash[item] += 1
       end
-    end
-
-    def four_of_a_kind?
-      @frequency.include?(4)
     end
 
     def three_of_a_kind?
