@@ -192,7 +192,7 @@ describe Poker::Hand do
     [12, 0, 19, 34, 6].shuffle,
     [16, 0, 34, 20, 9].shuffle
   ].each do |cards|
-    it "detects high_card for #{cards}" do
+    it "detects none for #{cards}" do
       hand = described_class.new(cards)
       expect(hand.check).to eq :none
     end

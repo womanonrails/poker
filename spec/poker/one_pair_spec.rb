@@ -2,16 +2,16 @@ require 'spec_helper'
 
 describe Poker::OnePair do
   [
-    [0, 7, 8, 36, 37],
-    [0, 40, 41, 44, 48],
-    [0, 8, 12, 44, 45],
-    [1, 9, 13, 48, 50],
-    [7, 19, 22, 38, 39],
-    [46, 47, 51, 43, 0].shuffle,
-    [46, 44, 16, 48, 0].shuffle,
-    [49, 50, 0, 7, 9].shuffle,
-    [37, 39, 1, 13, 21].shuffle,
-    [48, 49, 0, 39, 18].shuffle
+    [0, 1, 2, 9, 9],
+    [0, 10, 10, 11, 12],
+    [0, 2, 5, 11, 11],
+    [0, 2, 3, 12, 12],
+    [1, 4, 5, 9, 9],
+    [11, 11, 12, 10, 0].shuffle,
+    [11, 11, 4, 12, 0].shuffle,
+    [12, 12, 0, 1, 2].shuffle,
+    [9, 9, 0, 3, 5].shuffle,
+    [12, 12, 0, 9, 4].shuffle
   ].each do |cards|
     it "detects pair for #{cards}" do
       hand = described_class.new(cards)

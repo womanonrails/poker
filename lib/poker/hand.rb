@@ -9,15 +9,20 @@ module Poker
 
   # Poker hand
   class Hand
-    def initialize(array, order_checking = ORDER_CHECKING)
+    def initialize(array, order_checking = ORDER_CHECKING, normalization = CardsNormalization)
       @array = array.sort
       @figures, @colors = cards_figures_and_colors
       @frequency = cards_frequency.values
       @order_checking = order_checking
+      @normalization = normalization
     end
 
     def check
       @order_checking.each do |name|
+        if [:one_pair].include? name
+          class_name  = 'Poker::' + name.to_s.split('_').collect(&:capitalize).join
+          return name if Object.const_get(class_name).new(@array, @normalization).check == name
+        end
         if [:four_of_a_kind, :three_of_a_kind, :one_pair].include? name
           class_name  = 'Poker::' + name.to_s.split('_').collect(&:capitalize).join
           return name if Object.const_get(class_name).new(@array).check == name
