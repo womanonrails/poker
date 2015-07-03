@@ -34,22 +34,9 @@ describe Poker::Hand do
     end
   end
 
-  [
-    [0, 1, 2, 3, 4],
-    [4, 5, 6, 0, 7],
-    [8, 9, 0, 10, 11],
-    [12, 0, 13, 14, 15],
-    [0, 16, 17, 18, 19],
-    [20, 21, 22, 23, 0].shuffle,
-    [24, 25, 26, 27, 0].shuffle,
-    [28, 29, 30, 31, 0].shuffle,
-    [32, 33, 34, 35, 0].shuffle,
-    [36, 37, 38, 39, 0].shuffle
-  ].each do |cards|
-    it "detects four_of_a_kind for #{cards}" do
-      hand = described_class.new(cards)
-      expect(hand.check).to eq :four_of_a_kind
-    end
+  it 'detects four_of_a_kind' do
+    hand = described_class.new([0, 1, 2, 3, 4])
+    expect(hand.check).to eq :four_of_a_kind
   end
 
   [
@@ -108,22 +95,9 @@ describe Poker::Hand do
     end
   end
 
-  [
-    [0, 1, 2, 4, 8],
-    [4, 5, 6, 8, 12],
-    [8, 9, 10, 12, 16],
-    [12, 13, 14, 16, 20],
-    [16, 17, 18, 20, 24],
-    [20, 21, 22, 24, 28].shuffle,
-    [24, 25, 26, 28, 32].shuffle,
-    [28, 29, 30, 32, 37].shuffle,
-    [32, 33, 34, 0, 4].shuffle,
-    [51, 50, 49, 0, 14].shuffle
-  ].each do |cards|
-    it "detects three_of_a_kind for #{cards}" do
-      hand = described_class.new(cards)
-      expect(hand.check).to eq :three_of_a_kind
-    end
+  it 'detects three_of_a_kind' do
+    hand = described_class.new([0, 1, 2, 4, 8])
+    expect(hand.check).to eq :three_of_a_kind
   end
 
   [
@@ -144,7 +118,7 @@ describe Poker::Hand do
     end
   end
 
-  it "detects pair" do
+  it 'detects pair' do
     hand = described_class.new([0, 7, 8, 36, 37])
     expect(hand.check).to eq :one_pair
   end
