@@ -5,8 +5,8 @@ module Poker
   class Hand
     def initialize(array)
       @array = array.sort
-      @cards = @array.map { |item| item / 4 }
-      @frequency = cards_frequency
+      @figures, @colors = cards_figures_and_colors
+      @frequency = cards_frequency.values
     end
 
     def check
@@ -24,10 +24,14 @@ module Poker
 
     private
 
+    def cards_figures_and_colors
+      @array.map { |item| [item / 4, item % 4] }.transpose
+    end
+
     def cards_frequency
-      hash = Hash.new(0)
-      @cards.each { |item| hash[item] += 1 }
-      hash.values
+      @figures.each_with_object(Hash.new(0)) do |item, hash|
+        hash[item] += 1
+      end
     end
 
     def four_of_a_kind?
@@ -51,16 +55,15 @@ module Poker
     end
 
     def flush?
-      color = @array.map { |item| item % 4 }
-      color.uniq.size == 1
+      @colors.uniq.size == 1
     end
 
     def straight?
-      [0, 1, 2, 3, 12] == @cards || normal_straight?
+      [0, 1, 2, 3, 12] == @figures || normal_straight?
     end
 
     def normal_straight?
-      @cards.each_cons(2) do |previous, current|
+      @figures.each_cons(2) do |previous, current|
         return false unless previous + 1 == current
       end
       true
@@ -71,7 +74,7 @@ module Poker
     end
 
     def high_card?
-      @array.last >= 36
+      @figures.last >= 9
     end
   end
 end
