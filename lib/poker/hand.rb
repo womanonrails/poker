@@ -19,7 +19,7 @@ module Poker
 
     def check
       @order_checking.each do |name|
-        if [:four_of_a_kind, :three_of_a_kind, :one_pair].include? name
+        if [:four_of_a_kind, :three_of_a_kind, :one_pair, :full_house].include? name
           class_name  = 'Poker::' + name.to_s.split('_').collect(&:capitalize).join
           return name if Object.const_get(class_name).new(@array, @normalization).check == name
         else
@@ -41,21 +41,21 @@ module Poker
       end
     end
 
-    def three_of_a_kind?
-      @frequency.include?(3)
-    end
+    # def three_of_a_kind?
+    #   @frequency.include?(3)
+    # end
 
-    def one_pair?
-      @frequency.include?(2)
-    end
+    # def one_pair?
+    #   @frequency.include?(2)
+    # end
 
     def straight_flush?
       straight? && flush?
     end
 
-    def full_house?
-      three_of_a_kind? && one_pair?
-    end
+    # def full_house?
+    #   three_of_a_kind? && one_pair?
+    # end
 
     def flush?
       @colors.uniq.size == 1
