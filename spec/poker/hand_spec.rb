@@ -10,7 +10,7 @@ describe Poker::Hand do
     [32, 36, 40, 44, 48],
     [35, 39, 43, 47, 51].shuffle
   ].each do |cards|
-    it "detects royal_flush for #{cards}" do
+    xit "detects royal_flush for #{cards}" do
       hand = described_class.new(cards)
       expect(hand.check).to eq :royal_flush
     end
