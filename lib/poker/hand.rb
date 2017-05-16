@@ -3,8 +3,8 @@ require 'pry'
 # Poker class
 module Poker
   ORDER_CHECKING = [
-    :straight_flush, :four_of_a_kind, :full_house, :flush, :straight,
-    :three_of_a_kind, :two_pair, :one_pair, :high_card, :none
+    :royal_flush, :straight_flush, :four_of_a_kind, :full_house, :flush,
+    :straight, :three_of_a_kind, :two_pair, :one_pair, :high_card, :none
   ]
 
   # Poker hand
@@ -48,6 +48,10 @@ module Poker
     # def one_pair?
     #   @frequency.include?(2)
     # end
+
+    def royal_flush?
+      [8, 9, 10, 11, 12] == @figures && flush?
+    end
 
     def straight_flush?
       straight? && flush?

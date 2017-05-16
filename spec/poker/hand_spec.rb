@@ -8,11 +8,23 @@ describe Poker::Hand do
 
   [
     [32, 36, 40, 44, 48],
-    [35, 39, 43, 47, 51].shuffle
+    [35, 39, 43, 47, 51].shuffle,
+    [49, 45, 41, 37, 33].shuffle
   ].each do |cards|
-    xit "detects royal_flush for #{cards}" do
+    it "detects royal_flush for #{cards}" do
       hand = described_class.new(cards)
       expect(hand.check).to eq :royal_flush
+    end
+  end
+
+  [
+    [32, 37, 40, 44, 48],
+    [35, 38, 43, 47, 51].shuffle,
+    [49, 45, 40, 37, 33].shuffle
+  ].each do |cards|
+    it "does not detect royal_flush for #{cards}" do
+      hand = described_class.new(cards)
+      expect(hand.check).to_not eq :royal_flush
     end
   end
 
@@ -25,8 +37,6 @@ describe Poker::Hand do
     [37, 29, 33, 21, 25].shuffle,
     [30, 34, 38, 26, 42].shuffle,
     [31, 35, 47, 43, 39].shuffle,
-    [32, 48, 40, 44, 36].shuffle,
-    [49, 45, 41, 37, 33].shuffle
   ].each do |cards|
     it "detects straight_flush for #{cards}" do
       hand = described_class.new(cards)
