@@ -19,7 +19,10 @@ module Poker
 
     def check
       @order_checking.each do |name|
-        if [:flush, :straight, :four_of_a_kind, :three_of_a_kind, :one_pair, :full_house].include? name
+        if [
+          :straight_flush, :flush, :straight, :four_of_a_kind, :three_of_a_kind,
+          :one_pair, :full_house
+        ].include? name
           class_name  = 'Poker::' + name.to_s.split('_').collect(&:capitalize).join
           return name if Object.const_get(class_name).new(@array, @normalization).check == name
         else
@@ -53,9 +56,9 @@ module Poker
       [8, 9, 10, 11, 12] == @figures && flush?
     end
 
-    def straight_flush?
-      straight? && flush?
-    end
+    # def straight_flush?
+    #   straight? && flush?
+    # end
 
     # def full_house?
     #   three_of_a_kind? && one_pair?
@@ -65,16 +68,16 @@ module Poker
       @colors.uniq.size == 1
     end
 
-    def straight?
-      [0, 1, 2, 3, 12] == @figures || normal_straight?
-    end
+    # def straight?
+    #   [0, 1, 2, 3, 12] == @figures || normal_straight?
+    # end
 
-    def normal_straight?
-      @figures.each_cons(2) do |previous, current|
-        return false unless previous + 1 == current
-      end
-      true
-    end
+    # def normal_straight?
+    #   @figures.each_cons(2) do |previous, current|
+    #     return false unless previous + 1 == current
+    #   end
+    #   true
+    # end
 
     def two_pair?
       (@frequency - [2]).size == 1
