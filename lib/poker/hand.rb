@@ -21,7 +21,7 @@ module Poker
       @order_checking.each do |name|
         if [
           :straight_flush, :flush, :straight, :four_of_a_kind, :three_of_a_kind,
-          :one_pair, :full_house, :royal_flush
+          :one_pair, :full_house, :royal_flush, :none
         ].include? name
           class_name  = 'Poker::' + name.to_s.split('_').collect(&:capitalize).join
           return name if Object.const_get(class_name).new(@array, @normalization).check == name
@@ -50,10 +50,6 @@ module Poker
 
     def high_card?
       @figures.last >= 9
-    end
-
-    def none?
-      true
     end
   end
 end
