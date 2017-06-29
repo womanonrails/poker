@@ -12,7 +12,6 @@ module Poker
     def initialize(array, order_checking = ORDER_CHECKING, normalization = CardsNormalization)
       @array = array.sort
       @figures = cards_figures
-      @frequency = cards_frequency.values
       @order_checking = order_checking
       @normalization = normalization
     end
@@ -21,7 +20,7 @@ module Poker
       @order_checking.each do |name|
         if [
           :straight_flush, :flush, :straight, :four_of_a_kind, :three_of_a_kind,
-          :one_pair, :full_house, :royal_flush, :none
+          :one_pair, :full_house, :royal_flush, :none, :two_pair
         ].include? name
           class_name  = 'Poker::' + name.to_s.split('_').collect(&:capitalize).join
           return name if Object.const_get(class_name).new(@array, @normalization).check == name
@@ -36,16 +35,6 @@ module Poker
 
     def cards_figures
       @array.map { |item| item / 4 }
-    end
-
-    def cards_frequency
-      @figures.each_with_object(Hash.new(0)) do |item, hash|
-        hash[item] += 1
-      end
-    end
-
-    def two_pair?
-      (@frequency - [2]).size == 1
     end
 
     def high_card?
