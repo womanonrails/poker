@@ -1,6 +1,7 @@
 require 'normalization'
 require 'cards_normalization'
 require 'rules/frequency_rule'
+require 'rules/multi_frequency_rule'
 require 'rules/straightness_rule'
 require 'rules/flushness_rule'
 require 'rules/royalness_rule'
