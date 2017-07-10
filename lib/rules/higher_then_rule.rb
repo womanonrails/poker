@@ -6,7 +6,7 @@ module Rules
     end
 
     def check?
-      @figure_array.all? { |number| number > @higher_then }
+      @figure_array.any? { |number| number > @higher_then }
     end
   end
 end

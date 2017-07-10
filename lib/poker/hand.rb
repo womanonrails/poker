@@ -11,34 +11,21 @@ module Poker
   class Hand
     def initialize(array, order_checking = ORDER_CHECKING, normalization = CardsNormalization)
       @array = array.sort
-      @figures = cards_figures
       @order_checking = order_checking
       @normalization = normalization
     end
 
     def check
       @order_checking.each do |name|
-        if [
-          :straight_flush, :flush, :straight, :four_of_a_kind, :three_of_a_kind,
-          :one_pair, :full_house, :royal_flush, :none, :two_pair
-        ].include? name
-          class_name  = 'Poker::' + name.to_s.split('_').collect(&:capitalize).join
-          return name if Object.const_get(class_name).new(@array, @normalization).check == name
-        else
-          method_name = (name.to_s + '?').to_sym
-          return name if send(method_name)
-        end
+        return name if class_name(name).check == name
       end
     end
 
     private
 
-    def cards_figures
-      @array.map { |item| item / 4 }
-    end
-
-    def high_card?
-      @figures.last >= 9
+    def class_name(name)
+      class_name = 'Poker::' + name.to_s.split('_').collect(&:capitalize).join
+      Object.const_get(class_name).new(@array, @normalization)
     end
   end
 end
