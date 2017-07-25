@@ -7,8 +7,8 @@ module Rules
     end
 
     def check?
-      selected_frequency = @frequency_array.reject { |number| number < @count }
-      selected_frequency.count >= @times
+      selected_frequency = @frequency_array.map { |number| number / @count }
+      selected_frequency.sum >= @times
     end
   end
 end

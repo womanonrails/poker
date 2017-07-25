@@ -6,7 +6,9 @@ describe Poker::TwoPair do
     [1, 1, 2, 2, 5],
     [2, 2, 3, 3, 4],
     [3, 3, 4, 4, 5],
-    [4, 4, 5, 5, 6]
+    [4, 4, 5, 5, 6],
+    [4, 5, 5, 5, 5],
+    [2, 2, 3, 3, 3]
   ].each do |cards|
     it "detects two_pair for #{cards}" do
       hand = described_class.new(cards)

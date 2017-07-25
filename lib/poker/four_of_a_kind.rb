@@ -2,7 +2,7 @@ module Poker
   class FourOfAKind
     def initialize(array, normalization = Normalization)
       @normalize_array = normalization.new(array)
-      @rule = Rules::FrequencyRule.new(@normalize_array.figures_frequency, 4)
+      @rule = Rules::MultiFrequencyRule.new(@normalize_array.figures_frequency, 4)
     end
 
     def check

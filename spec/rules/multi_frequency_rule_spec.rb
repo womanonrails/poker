@@ -31,6 +31,11 @@ describe Rules::MultiFrequencyRule do
     expect(frequency_rule).to be_check
   end
 
+  it 'check if array have 4 then have 2 times 2' do
+    frequency_rule = described_class.new([1, 4], 2, 2)
+    expect(frequency_rule).to be_check
+  end
+
   it 'check if array has not number 3 times' do
     frequency_rule = described_class.new([2, 2, 1, 1], 2, 3)
     expect(frequency_rule).to_not be_check
