@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rules
   class HigherThenRule
     def initialize(figure_array, higher_then)

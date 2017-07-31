@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Poker::Hand do
@@ -36,7 +38,7 @@ describe Poker::Hand do
     [16, 20, 24, 28, 32],
     [37, 29, 33, 21, 25].shuffle,
     [30, 34, 38, 26, 42].shuffle,
-    [31, 35, 47, 43, 39].shuffle,
+    [31, 35, 47, 43, 39].shuffle
   ].each do |cards|
     it "detects straight_flush for #{cards}" do
       hand = described_class.new(cards)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Poker
   class TwoPair
     def initialize(array, normalization = Normalization)

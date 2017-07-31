@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RulesFactory
   def initialize(*rules)
     @rules = rules

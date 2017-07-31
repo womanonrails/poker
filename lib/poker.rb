@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'normalization'
 require 'cards_normalization'
 require 'rules/frequency_rule'

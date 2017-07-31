@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Normalization
   attr_reader :figures, :colors, :figures_frequency
 

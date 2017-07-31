@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rules
   class MultiFrequencyRule
     def initialize(frequency_array, count, times = 1)

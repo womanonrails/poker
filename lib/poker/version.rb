@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Gem version
 module Poker
   VERSION = '0.1.0'

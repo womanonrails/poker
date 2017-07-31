@@ -1,0 +1,17 @@
+AllCops:
+  Exclude:
+    - Gemfile
+    - Rakefile
+    - bin/**/*
+    - poker.gemspec
+    - spec/**/*
+  TargetRubyVersion: 2.4
+
+
+Style/SymbolArray:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+

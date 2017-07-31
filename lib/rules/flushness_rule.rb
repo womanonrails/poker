@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rules
   class FlushnessRule
     def initialize(color_array)

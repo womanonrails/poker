@@ -6,15 +6,11 @@ require 'poker/version'
 Gem::Specification.new do |spec|
   spec.name          = 'poker'
   spec.version       = Poker::VERSION
-  spec.authors       = ['Alek Malaszkiewicz', 'Agnieszka Matysek']
-  spec.email         = %w(alek@fractalsoft.org amatysek@fractalsoft.org)
-
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
+  spec.authors       = ['Agnieszka Matysek']
+  spec.email         = %w(amatysek@fractalsoft.org)
 
   spec.summary       = 'Poker game'
-  spec.description   = 'Poker game'
+  spec.description   = 'Poker game rules for checking hand'
   spec.homepage      = ''
   spec.license       = 'MIT'
 
@@ -23,9 +19,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.8'
-  spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'rspec', '~> 3.3'
-  spec.add_development_dependency 'rubocop', '~> 0.32'
-  spec.add_development_dependency 'pry', '~> 0.9'
+  spec.add_development_dependency 'bundler', '~> 1.15'
+  spec.add_development_dependency 'pry', '~> 0.10'
+  spec.add_development_dependency 'rake', '~> 12.0'
+  spec.add_development_dependency 'rspec', '~> 3.6'
+  spec.add_development_dependency 'rubocop', '~> 0.49'
 end
